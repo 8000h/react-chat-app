@@ -32,7 +32,7 @@ class ChatInput extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container-80-20 col-gap">
                 <input onSubmut={this.onSubmit} name="inputMessage" type="text" value={this.state.inputMessage} onChange={this.onChange} />
                 <button onClick={this.onSubmit}>Send Message</button>
             </div>

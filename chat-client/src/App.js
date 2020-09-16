@@ -83,8 +83,9 @@ class App extends React.Component {
     }
 
     proto_chat = (message) => {
-        this.setState(prevState => this.state.history.push(message))
-        console.log(this.state.history);
+        this.setState(prevState => this.state.history.push(message));
+        let elem = document.getElementById("chat-view");
+        elem.scrollTop = elem.scrollHeight;
     }
 
     proto_userupdate = (message) => {
@@ -95,9 +96,11 @@ class App extends React.Component {
                 break;
 
             case "leave":
-                this.setState(prevState => {
-                    this.state.members.splice(this.state.members.indexOf(nickname));
+                const newUsers = this.state.members.filter(username => username !== nickname);
+                this.setState({
+                    members: newUsers
                 });
+                
                 break;
         }
     }
@@ -152,7 +155,7 @@ class App extends React.Component {
 
             case PROTO_SESSION:
                 return (
-                    <div className="container-halfs">
+                    <div className="container-80-20">
                         <ChatView history={this.state.history} />
                         <MemberList members={this.state.members} />
                         <ChatInput app={this} />

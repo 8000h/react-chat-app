@@ -28,10 +28,13 @@ class Name extends React.Component {
 
     render() {
         return (
-            <div>
-                <form className="sc-form container-70-30">
-                    <input onChange={this.onChange} type="text" name="inputName" placeholder="Nickname" />
-                    <button onClick={this.onClick}>Join Chatroom</button>
+            <div className="center" style={{width: "50%"}}>
+                <form className="sc-form">
+                    <h3>Enter a username</h3>
+                    <div className="container-halfs">
+                        <input onChange={this.onChange} type="text" name="inputName" placeholder="Nickname" />
+                        <button onClick={this.onClick}>Join Chatroom</button>
+                    </div>
                 </form>
             </div>
         )

@@ -51,6 +51,12 @@ const createUserUpdateObject = (user, action) => {
     }
 }
 
+const sendUsers = async (client) => {
+    for (var user of clients)
+        if (user !== client)
+            client.sendMessage(createUserUpdateObject(user.nickname, "join"));
+}
+
 const forwardMessage = async (message) => {
     clients.forEach(async (client) => {
         client.sendMessage(message);
@@ -81,6 +87,8 @@ const proto_setname = (sender, message) => {
 
         let userJoinObject = createUserUpdateObject(sender.nickname, "join");
         forwardMessage(userJoinObject);
+
+        sendUsers(sender);
 
     } else {
          sender.sendMessage({

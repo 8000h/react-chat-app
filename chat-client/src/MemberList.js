@@ -6,7 +6,7 @@ function MemberList(props) {
         return <p>{member}</p>
     });
 
-    return <div><h1>Members</h1><hr />{members}</div>
+    return <div className="member-list"><h3>Users</h3>{members}</div>
 }
 
 export default MemberList;
